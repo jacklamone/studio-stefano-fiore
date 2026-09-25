@@ -18,6 +18,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Completa asset se mancanti
+        run: |
+          set -e
+          mkdir -p assets/img assets/fonts assets/css assets/js
+          BASE=https://studio-stefano-fiore.netlify.app
+          fetch() {
+            if [ ! -s "$1" ]; then
+              curl -fsSL "$2" -o "$1" && echo "ok $1" || echo "skip $1"
+            fi
+          }
+          fetch assets/img/logo.webp "$BASE/assets/img/logo.webp"
+          fetch assets/img/logo-light.webp "$BASE/assets/img/logo-light.webp"
+          fetch assets/img/intellecta.png "$BASE/assets/img/intellecta.png"
+          fetch assets/img/favicon.png "$BASE/assets/img/favicon.png"
+          fetch assets/img/apple-touch-icon.png "$BASE/assets/img/apple-touch-icon.png"
+          fetch assets/img/stretta-di-mano.webp "$BASE/assets/img/stretta-di-mano.webp"
+          fetch assets/fonts/fraunces-latin-opsz-normal.woff2 "$BASE/assets/fonts/fraunces-latin-opsz-normal.woff2"
+          fetch assets/fonts/fraunces-latin-opsz-italic.woff2 "$BASE/assets/fonts/fraunces-latin-opsz-italic.woff2"
+          fetch assets/fonts/manrope-latin-wght-normal.woff2 "$BASE/assets/fonts/manrope-latin-wght-normal.woff2"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
