@@ -40,6 +40,8 @@ jobs:
           fetch assets/fonts/manrope-latin-wght-normal.woff2 "$BASE/assets/fonts/manrope-latin-wght-normal.woff2"
           if [ -f assets/css/overrides.css ]; then cat assets/css/overrides.css >> assets/css/style.css; fi
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
