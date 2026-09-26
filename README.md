@@ -1,18 +1,12 @@
 # Studio Dott. Stefano Fiore
 
-Sito statico — finanza agevolata.
-Hostato su **GitHub Pages** (niente crediti Netlify).
+Sito statico — finanza agevolata. Hosting: **GitHub Pages** (Netlify non usato).
 
-## URL
+Pubblicazione (una volta):
 
-- Pagine: https://jacklamone.github.io/studio-stefano-fiore/
-- Repo: https://github.com/jacklamone/studio-stefano-fiore
-- Netlify originale (non modificato): https://studio-stefano-fiore.netlify.app
+1. Settings → Pages
+2. Build and deployment → **Deploy from a branch**
+3. Branch: `main` / cartella `/ (root)`
+4. Save
 
-## Attivare Pages (una volta)
-
-1. Apri https://github.com/jacklamone/studio-stefano-fiore/settings/pages
-2. **Build and deployment → Source**: GitHub Actions
-3. Se il primo workflow è in attesa, approva l’environment `github-pages`.
-
-Al push su `main` il sito si aggiorna da solo.
+URL: https://jacklamone.github.io/studio-stefano-fiore/

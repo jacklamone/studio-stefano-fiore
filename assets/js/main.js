@@ -6,6 +6,7 @@
   doc.classList.remove("no-js");
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Header: stato "scrolled" e scomparsa scrollando in giù ---------- */
   var header = document.querySelector(".site-header");
   var lastY = window.scrollY;
   function onScroll() {
@@ -20,6 +21,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Menu mobile ---------- */
   var toggle = document.querySelector(".menu-toggle");
   var nav = document.getElementById("nav");
   function setMenu(open) {
@@ -51,6 +53,7 @@
     });
   }
 
+  /* ---------- Comparsa progressiva ---------- */
   var revealables = document.querySelectorAll(".reveal, .steps, .photo-frame");
   if ("IntersectionObserver" in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
@@ -66,6 +69,7 @@
     revealables.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  /* ---------- Pannello "percorso" nella hero: avanza passo dopo passo ---------- */
   var journey = document.querySelector(".journey ol");
   if (journey && !reduceMotion) {
     var items = journey.querySelectorAll("li");
@@ -91,6 +95,7 @@
     setTimeout(tick, 2400);
   }
 
+  /* ---------- Intervista: YouTube caricato solo al clic (niente cookie prima) ---------- */
   document.querySelectorAll("[data-youtube]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var id = btn.getAttribute("data-youtube");
@@ -104,6 +109,7 @@
     });
   });
 
+  /* ---------- Form contatti (Netlify Forms) ---------- */
   var form = document.querySelector("form[data-netlify]");
   if (form && window.fetch) {
     var success = document.querySelector(".form-success");
@@ -138,10 +144,12 @@
     });
   }
 
+  /* ---------- Anno nel footer ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
 
+  /* ---------- Freccia torna su ---------- */
   var toTop = document.createElement("button");
   toTop.className = "to-top";
   toTop.type = "button";
